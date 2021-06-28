@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private int health = 3;
     [SerializeField]
     private GameObject bullet;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // 피격시 호출
-    void Damaged(int damage)
+    public void Damaged(int damage)
     {
         health = health - damage;
         //ChangeLife(health);
