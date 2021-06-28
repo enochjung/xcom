@@ -14,7 +14,6 @@ using UnityEngine;
 
 /**
  * 추가 구현이 필요한 기능 :
- * Update()의 gameOver 연동
  * 사망 이펙트 추가
  **/
 
@@ -22,36 +21,38 @@ public class AlienController : MonoBehaviour
 {
 	[SerializeField]
 	[Tooltip("현재 체력")]
-	private int hp = 3;
+	int hp = 3;
 
 	[SerializeField]
 	[Tooltip("공격 주기(초)")]
-	private float shootPeriod = 5f;
+	float shootPeriod = 5f;
 
 	[SerializeField]
 	[Tooltip("이동 속도")]
-	private float speed = 3f;
+	float speed = 3f;
 
 	[SerializeField]
 	[Tooltip("x축 이동 반경")]
-	private float xBound = 7.6f;
+	float xBound = 7.6f;
 
 	[SerializeField]
 	[Tooltip("한 번 내려갈 때의 y축 이동 거리")]
-	private float yBound = 1.5f;
+	float yBound = 1.5f;
 
 	[SerializeField]
 	[Tooltip("게임오버 판정이 일어나는 y좌표. 해당 좌표 밑으로 에일리언이 내려가면 게임 오버")]
-	private float gameOverYBound = -3.5f;
+	float gameOverYBound = -3.5f;
 
 	[SerializeField]
-	private GameObject alienBullet;
+	GameObject alienBullet;
+
+	GameManager gameManager;
 
 	// 에일리언의 이동 방향. 0은 왼쪽, 1은 왼쪽 이후 아래, 2는 오른쪽, 3은 오른쪽 이후 아래
-	private int goingWay;
+	int goingWay;
 
 	// 에일리언이 y축으로 이동을 시작하기 직전의 y좌표
-	private float yMoving;
+	float yMoving;
 
 	// 호출 시 damage 값 만큼 피해를 받음
 	// 체력이 0 이하로 떨어지면 사망
@@ -64,6 +65,7 @@ public class AlienController : MonoBehaviour
 
 	void Start()
 	{
+		gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 		goingWay = 0;
 
 		StartCoroutine(ShootCoroutine());
@@ -74,7 +76,7 @@ public class AlienController : MonoBehaviour
 		Move();
 		if (IsInGameOverZone())
 		{
-			// gameManager.GameOver();
+			gameManager.GameOver();
 			Debug.Log("Game Over");
 		}
 	}
