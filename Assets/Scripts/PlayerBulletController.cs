@@ -22,7 +22,7 @@ public class PlayerBulletController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.name == "Alien")
+		if (other.gameObject.name == "Alien(Clone)")
 		{
 			AlienController alienController = other.GetComponent<AlienController>();
 			alienController.Damaged(damage);
