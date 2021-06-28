@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 20f;
-    public float power = 1000f;
+    [SerializeField]
+    private float speed = 20f;
+    [SerializeField]
+    private int health = 3;
+    [SerializeField]
+    private GameObject bullet;
     
-    public GameObject bullet;
-    public Transform spawnPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +20,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 플레이어 이동
         transform.Translate(Input.GetAxisRaw("Horizontal")*speed*Time.deltaTime, 0, 0);
-
+        // 발사 (스페이스바)
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            shoot();
+            GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity) as GameObject;
+        }
+
+    }
+
+    // 피격시 호출
+    void Damaged(int damage)
+    {
+        health = health - damage;
+        //ChangeLife(health);
+
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+            //GameOver();
         }
     }
 
-    void shoot()
-    {
-        GameObject newBullet = Instantiate(bullet, spawnPoint.position, Quaternion.identity) as GameObject;
-        newBullet.GetComponent<Rigidbody2D>().AddForce(Vector3.up * power);
-    }
 }
