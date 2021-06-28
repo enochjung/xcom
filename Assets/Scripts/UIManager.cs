@@ -76,6 +76,7 @@ public class UIManager : MonoBehaviour
 
 	void CallNewLevel(int level)
 	{
+		ChangeBigText("");
 		// gameManager.GetComponent<GameManager>.LevelStart(level);
 	}
 
