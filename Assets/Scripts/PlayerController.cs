@@ -11,11 +11,16 @@ public class PlayerController : MonoBehaviour
 	private int health = 3;
 	[SerializeField]
 	private GameObject bullet;
+	
+	private GameObject GameManager;
+	private GameObject UIManager;
+	private float moveableRange = 9f;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-
+		GameManager = GameObject.Find("GameManager");
+		UIManager = GameObject.Find("UIManager");
 	}
 
 	// Update is called once per frame
@@ -23,8 +28,9 @@ public class PlayerController : MonoBehaviour
 	{
 		// 플레이어 이동
 		transform.Translate(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0, 0);
-		// 플레이어 이동 범위 제한
-		//transform.position = new Vector
+		// 플레이어 이동범위 제한
+		transform.position = new Vector2(Mathf.Clamp(transform.position.x, -moveableRange, moveableRange), transform.position.y);
+
 		// 발사 (스페이스바)
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
@@ -38,12 +44,12 @@ public class PlayerController : MonoBehaviour
 	{
 		health = health - damage;
 		Debug.Log("플레이어 피격");
-		//ChangeLife(health);
+		UIManager.GetComponent<UIManager>().ChangeLife(health);
 
 		if (health <= 0)
 		{
 			Destroy(this.gameObject);
-			//GameOver();
+			GameManager.GetComponent<GameManager>().GameOver();
 		}
 	}
 

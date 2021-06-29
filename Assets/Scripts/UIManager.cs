@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
 
 	void Start()
 	{
-		//gameManager = GameObject.Find("GameManager");
+		gameManager = GameObject.Find("GameManager");
 		levelText = GameObject.Find("Level").GetComponent<Text>();
 		lifeText = GameObject.Find("Life").GetComponent<Text>();
 		bigText = GameObject.Find("BigText").GetComponent<Text>();
@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
 
 	public void ChangeLife(int life)
 	{
-		levelText.text = "Life : " + life;
+		lifeText.text = "Life : " + life;
 	}
 
 	void ChangeBigText(string text)
@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
 	void CallNewLevel(int level)
 	{
 		ChangeBigText("");
-		// gameManager.GetComponent<GameManager>.LevelStart(level);
+		gameManager.GetComponent<GameManager>().LevelStart(level);
 	}
 
 	public void GameOver()

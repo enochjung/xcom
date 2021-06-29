@@ -128,4 +128,4 @@ MonoBehaviour:
   xBound: 7.6
   yBound: 1.5
   gameOverYBound: -3.5
-  alienBullet: {fileID: 5129420669640238267, guid: 7dccd201ea453fa4588f75b8e82b9e4a, type: 3}
+  alienBullet: {fileID: 5129420669640238267, guid: 846d287f9cd2ee2458af8fe646228fa5, type: 3}
