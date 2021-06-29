@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8925151411194847260}
   m_Layer: 0
   m_Name: AlienBullet
-  m_TagString: Untagged
+  m_TagString: AlienBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
