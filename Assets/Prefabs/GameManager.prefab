@@ -47,3 +47,4 @@ MonoBehaviour:
   covers: []
   AlienPrefab: {fileID: 6853848801086462947, guid: d28d9c4e3dab56a43aaf0f6e3d1bbd58, type: 3}
   PlayerPrefab: {fileID: 1219178959439901699, guid: 4451177a0fa963848b55916521d8a807, type: 3}
+  CoverPrefab: {fileID: 196401112547050703, guid: c89c52a51685764499dec9bd91151b3e, type: 3}
