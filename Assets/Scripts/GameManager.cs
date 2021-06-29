@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject PlayerPrefab;
 
-    //[SerializeField]
-    //GameObject CoverPrefab;
+    [SerializeField]
+    GameObject CoverPrefab;
 
     private int level = 1;
     private int health = 3;
@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
         player = Instantiate(PlayerPrefab) as GameObject;
         player.transform.position = new Vector3(0,-4,0);
         
+        // cover 생성
+        covers.Add(Instantiate(CoverPrefab, new Vector3(0, -2 ,0), Quaternion.identity) as GameObject);
+
         if(level == 1)
             AlienGenerator(4);
         else if(level == 2)
@@ -75,11 +78,11 @@ public class GameManager : MonoBehaviour
             Destroy(aliens[i]);
         aliens.Clear();
 
-        /*
+        
         for(int i = 0; i < covers.Count; i++)
             Destroy(covers[i]);
         covers.Clear();
-        */
+        
 
         isPlaying = false;
         Destroy(player);
