@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 작업자 : 박한샘
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField]
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
 	{
 		// 플레이어 이동
 		transform.Translate(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0, 0);
+		// 플레이어 이동 범위 제한
+		//transform.position = new Vector
 		// 발사 (스페이스바)
 		if (Input.GetKeyDown(KeyCode.Space))
 		{

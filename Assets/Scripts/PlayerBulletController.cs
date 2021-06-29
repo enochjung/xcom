@@ -22,6 +22,7 @@ public class PlayerBulletController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
+
 		if (other.gameObject.tag == "Alien")
 		{
 			Debug.Log("외계인 타격");
