@@ -23,10 +23,18 @@ public class AlienBulletController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.tag == "Player")
         {
+            Debug.Log("플레이어 타격");
             PlayerController playerController = other.GetComponent<PlayerController>();
             playerController.Damaged(damage);
+            Destroy(gameObject);
+        }
+        if(other.gameObject.tag == "Cover")
+        {
+            Debug.Log("엄폐물 타격");
+            CoverController coverController = other.GetComponent<CoverController>();
+            coverController.Damaged(damage);
             Destroy(gameObject);
         }
     }

@@ -22,13 +22,20 @@ public class PlayerBulletController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.name == "Alien")
+		if (other.gameObject.tag == "Alien")
 		{
+			Debug.Log("외계인 타격");
 			AlienController alienController = other.GetComponent<AlienController>();
 			alienController.Damaged(damage);
 			Destroy(gameObject);
-			Debug.Log("공격");
 		}
+		if(other.gameObject.tag == "Cover")
+        {
+			Debug.Log("엄폐물 타격");
+            CoverController coverController = other.GetComponent<CoverController>();
+            coverController.Damaged(damage);
+            Destroy(gameObject);
+        }
 	}
 
 	void OnBecameInvisible()
